@@ -9,8 +9,8 @@ var user2measurement = {"michael": "michaelValue", "ding": "dingValue"};
 console.log(user2measurement[args[0]]);
 
 
-//firebase.initializeApp(firebaseConfig);
-//var database = firebase.database();
+firebase.initializeApp(firebaseConfig);
+var database = firebase.database();
 
 // to turn on LED: LED.writeSync(1);
 // to turn off LED: LED.writeSync(0);
