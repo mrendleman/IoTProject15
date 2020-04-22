@@ -13,7 +13,7 @@ To prepare the node environment, use commands from Lab02:
 
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 
-suto apt install -y nodejs
+sudo apt install -y nodejs
 
 
 Node dependencies: All Pis will need:
@@ -32,7 +32,7 @@ If you are using an LED, set up your physical circuit as described in this guide
 
 Basically, your led will be controlled by the fourth pin in the left column, the ground being the 5th pin in that column, and you'll need a resistor or two to ensure the LED doesn't burn out. You're ECE peeps so this won't be too hard.
 
-Then, we'll need another node module:
+Then, we'll need one last node module:
 
 npm install onoff
 
