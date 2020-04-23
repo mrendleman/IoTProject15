@@ -16,15 +16,16 @@ var sense = require( '@trbll/sense-hat-led' );
 //     appId: "1:860272082652:web:14531a855f5e6be16d7e19"
 // };
 
-var firebaseConfig = {
-    apiKey: "AIzaSyAy10kU2kBqbgQnFsjkUknMScIlKqkdbZ4",
-    authDomain: "finalporoject-team15.firebaseapp.com",
-    databaseURL: "https://finalporoject-team15.firebaseio.com",
-    projectId: "finalporoject-team15",
-    storageBucket: "finalporoject-team15.appspot.com",
-    messagingSenderId: "76330279348",
-    appId: "1:76330279348:web:fdb070eba465285b91d2e1"
-  };
+var firebaseConfig = require('./firebaseConfig.json');
+//{
+//    apiKey: "AIzaSyAy10kU2kBqbgQnFsjkUknMScIlKqkdbZ4",
+//    authDomain: "finalporoject-team15.firebaseapp.com",
+//    databaseURL: "https://finalporoject-team15.firebaseio.com",
+//    projectId: "finalporoject-team15",
+//    storageBucket: "finalporoject-team15.appspot.com",
+//    messagingSenderId: "76330279348",
+//    appId: "1:76330279348:web:fdb070eba465285b91d2e1"
+//  };
   
   
 // Initialize Firebase
