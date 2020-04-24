@@ -1,10 +1,32 @@
-<div>Teachable Machine Pose Model</div>
+<div>Teachable Machine Face Touching Model</div>
+<label for="alert-type">Choose an alert type:</label>
+<select id="alert-type">
+	<option value="browser">In-browser</option>
+	<option value="pi">Raspberry Pi</option>
+</select>
+
+<div id="personWrapper">
+	<label for="person">Choose who you are:</label>
+	<select id="person">
+		<option value="michael">Michael</option>
+		<option value="lorena">Lorena</option>
+		<option value="cai">Cai</option>
+		<option value="ding">Ding</option>
+	</select>
+</div>
+
 <button type="button" onclick="init()">Start</button>
 <div><canvas id="canvas"></canvas></div>
 <div id="label-container"></div>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
 <script type="text/javascript">
+	var personElem = document.getElementById("personWrapper");
+	personElem.style.visibility = "hidden";
+	var alert = document.getElementById("alert-type");
+	alert.onchange= function() {
+		personElem.style.visibility = (this.value == "pi") ? "visible":"hidden";
+	}
     // More API functions here:
     // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
 
@@ -61,6 +83,14 @@
 
         // finally draw the poses
         drawPose(pose);
+		// HERE IS WHERE ALERTS NEED TO HAPPEN
+		var alertType = document.getElementById("alert-type");
+		console.log("Alert type is: "+ alertType.value);
+		if (alertType.value == "browser") {
+
+		} else if (alertType.value == "pi") {
+			var personName = document.getElementById("person");
+		}
     }
 
     function drawPose(pose) {
