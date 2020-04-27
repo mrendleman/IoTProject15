@@ -25,9 +25,9 @@ function setup() {
 }
 
 
+let model, webcam, ctx, labelContainer, maxPredictions;
 async function init() {
 	const tmURL = "https://teachablemachine.withgoogle.com/models/hDFjqd73v/";
-	let model, webcam, ctx, labelContainer, maxPredictions;
 	var touchState = false;
     const modelURL = tmURL + "model.json";
     const metadataURL = tmURL + "metadata.json";
