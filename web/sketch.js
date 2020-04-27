@@ -1,18 +1,17 @@
-
-
-
-
-var audioClip;
-function preload() {
+function setup() {
 	audioClip=loadSound('./stoptouchingaudio.mp3');
-}
-
-function playClip() {
-	audioClip.play();
-}
-
-function stopClip() {
-	audioClip.stop();
+	const firebaseConfig = {
+	    "apiKey": "AIzaSyAy10kU2kBqbgQnFsjkUknMScIlKqkdbZ4",
+	    "authDomain": "finalporoject-team15.firebaseapp.com",
+	    "databaseURL": "https://finalporoject-team15.firebaseio.com",
+	    "projectID": "finalporoject-team15",
+	    "storageBucket": "finalporoject-team15.appspot.com",
+	    "messagingSenderId": "76330279348",
+	    "appId": "1:76330279348:web:fdb070eba465285b91d2e1"
+	};
+	firebase.initializeApp(firebaseConfig);
+	noLoop();
+	var database = firebase.database();
 }
 
 // hiding person selector until Pi option is chosen
@@ -22,19 +21,9 @@ var alert = document.getElementById("alert-type");
 alert.onchange= function() {
     personElem.style.visibility = (this.value == "pi") ? "visible":"hidden";
 }
+
 // More API functions here:
 // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
-const firebaseConfig = {
-    "apiKey": "AIzaSyAy10kU2kBqbgQnFsjkUknMScIlKqkdbZ4",
-    "authDomain": "finalporoject-team15.firebaseapp.com",
-    "databaseURL": "https://finalporoject-team15.firebaseio.com",
-    "projectID": "finalporoject-team15",
-    "storageBucket": "finalporoject-team15.appspot.com",
-    "messagingSenderId": "76330279348",
-    "appId": "1:76330279348:web:fdb070eba465285b91d2e1"
-};
-firebase.initializeApp(firebaseConfig);
-var database = firebase.database();
 
 // the link to your model provided by Teachable Machine export panel
 const URL = "https://teachablemachine.withgoogle.com/models/hDFjqd73v/";
@@ -101,9 +90,9 @@ async function predict() {
         if (touchState != currentState) {
             touchState = currentState;
             if (touchState) {
-                playClip();
+                audioClip.play();
             } else {
-                stopClip();
+                audioClip.stop();
             }
 
         }
