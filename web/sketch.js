@@ -17,11 +17,6 @@ function setup() {
 	var alert = document.getElementById("alert-type");
 	alert.onchange= function() {
 	    personElem.style.visibility = (this.value == "pi") ? "visible":"hidden";
-		if (this.value == "browser") {
-			document.body.style.backgroundColor="green";
-		} else {
-			 document.body.style.backgroundColor="white";
-		}
 	}
 	// More API functions here:
 	// https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
@@ -32,6 +27,9 @@ function setup() {
 
 let model, webcam, ctx, labelContainer, maxPredictions, touchState;
 async function init() {
+	if (document.getElementById("alert-type").value == "browser") {
+		 document.body.style.backgroundColor="green";
+	}
 	const tmURL = "https://teachablemachine.withgoogle.com/models/hDFjqd73v/";
 	touchState = false;
     const modelURL = tmURL + "model.json";
