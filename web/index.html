@@ -20,6 +20,11 @@
 <div id="label-container"></div>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/addons/p5.sound.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/addons/p5.sound.min.js"></script>
+<script src="sketch.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
 <script type="text/javascript">
@@ -32,7 +37,6 @@
 	}
     // More API functions here:
     // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
-	
 	const firebaseConfig = {
 		"apiKey": "AIzaSyAy10kU2kBqbgQnFsjkUknMScIlKqkdbZ4",
     	"authDomain": "finalporoject-team15.firebaseapp.com",
@@ -82,6 +86,7 @@
         await predict();
         window.requestAnimationFrame(loop);
     }
+	var touchState = false;
 
     async function predict() {
         // Prediction #1: run input through posenet
@@ -105,18 +110,27 @@
 		var pred2 = prediction[1].probability.toFixed(2);
 		console.log("pred1: "+ pred1);
 		console.log("pred2: "+ pred2);
+		var currentState = pred2>pred1;
 		if (alertType.value == "browser") {
+			if (touchState != currentState) {
+				touchState = currentState;
+				if (touchState) {
+					playClip();
+				} else {
+					stopClip();
+				}
 
+			}
 		} else if (alertType.value == "pi") {
 			var personName = document.getElementById("person"); // get person selection
 			database.ref(personName.value).once('value').then(function(data) { // get current person's value
 				var val = data.val();
-				var currentState = pred2>pred1;
 				if (val != currentState) { // if there is a change, send the change
 					console.log("Sending update: "+currentState+" to value " + personName.value);
 					var updates={};
 					updates[personName.value] = currentState;
 					database.ref().update(updates);
+					touchState = currentState;
 				}
 			});
 		}
