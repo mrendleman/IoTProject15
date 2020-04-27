@@ -17,6 +17,11 @@ function setup() {
 	var alert = document.getElementById("alert-type");
 	alert.onchange= function() {
 	    personElem.style.visibility = (this.value == "pi") ? "visible":"hidden";
+		if (this.value == "browser") {
+			document.body.style.backgroundColor="green";
+		} else {
+			 document.body.style.backgroundColor="white";
+		}
 	}
 	// More API functions here:
 	// https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
@@ -89,8 +94,10 @@ async function predict() {
             touchState = currentState;
             if (touchState) {
                 audioClip.play();
+				 document.body.style.backgroundColor="red";
             } else {
                 audioClip.stop();
+				document.body.style.backgroundColor="green";
             }
 
         }
