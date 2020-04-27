@@ -25,10 +25,10 @@ function setup() {
 }
 
 
-let model, webcam, ctx, labelContainer, maxPredictions;
+let model, webcam, ctx, labelContainer, maxPredictions, touchState;
 async function init() {
 	const tmURL = "https://teachablemachine.withgoogle.com/models/hDFjqd73v/";
-	var touchState = false;
+	touchState = false;
     const modelURL = tmURL + "model.json";
     const metadataURL = tmURL + "metadata.json";
 
