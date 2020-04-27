@@ -5,6 +5,7 @@ var IMU = new nodeimu.IMU();
 var sense = require( '@trbll/sense-hat-led' );
 
 
+
 var firebaseConfig = require('./firebaseConfig.json');
 
   
@@ -17,17 +18,20 @@ var updateTouchRef = database.ref('lorena');
 updateTouchRef.on('value', function(snapshot) {
 	if (snapshot.val()==true) {
 		console.log(snapshot.val());
-		setPixelValue([255,99,71]);
-	}else{
+		setPixelValue([255,0,0]);
+	}else if (snapshot.val()==false){
 		console.log(snapshot.val());
 		setPixelValue([0,128,8]);
+	}else if (snapshot.val()=='any'){
+		console.log(snapshot.val());
+		setPixelValue([0,0, 0]);
 	}
 });
 
-var idx = [0, 1, 2, 3, 4, 5, 6, 7];
+
 function setPixelValue(color) {
-	for (var i = 0; i < idx.length; i++) {
-    		for (var j = 0; j < idx.length; j++) {
+	for (var i = 0; i < 8; i++) {
+    		for (var j = 0; j < 8; j++) {
     			sense.setPixel(i,j,color);
 		}
 	}
