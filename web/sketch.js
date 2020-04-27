@@ -10,24 +10,23 @@ function setup() {
 	    "appId": "1:76330279348:web:fdb070eba465285b91d2e1"
 	};
 	firebase.initializeApp(firebaseConfig);
-	noLoop();
 	var database = firebase.database();
+	// hiding person selector until Pi option is chosen
+	var personElem = document.getElementById("personWrapper");
+	personElem.style.visibility = "hidden";
+	var alert = document.getElementById("alert-type");
+	alert.onchange= function() {
+	    personElem.style.visibility = (this.value == "pi") ? "visible":"hidden";
+	}
+	// More API functions here:
+	// https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
+	
+	// the link to your model provided by Teachable Machine export panel
+	const URL = "https://teachablemachine.withgoogle.com/models/hDFjqd73v/";
+	let model, webcam, ctx, labelContainer, maxPredictions;
+	var touchState = false;
 }
 
-// hiding person selector until Pi option is chosen
-var personElem = document.getElementById("personWrapper");
-personElem.style.visibility = "hidden";
-var alert = document.getElementById("alert-type");
-alert.onchange= function() {
-    personElem.style.visibility = (this.value == "pi") ? "visible":"hidden";
-}
-
-// More API functions here:
-// https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
-
-// the link to your model provided by Teachable Machine export panel
-const URL = "https://teachablemachine.withgoogle.com/models/hDFjqd73v/";
-let model, webcam, ctx, labelContainer, maxPredictions;
 
 async function init() {
     const modelURL = URL + "model.json";
@@ -61,7 +60,6 @@ async function loop(timestamp) {
     await predict();
     window.requestAnimationFrame(loop);
 }
-var touchState = false;
 
 async function predict() {
     // Prediction #1: run input through posenet
