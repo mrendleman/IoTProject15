@@ -22,15 +22,15 @@ function setup() {
 	// https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
 	
 	// the link to your model provided by Teachable Machine export panel
-	const URL = "https://teachablemachine.withgoogle.com/models/hDFjqd73v/";
-	let model, webcam, ctx, labelContainer, maxPredictions;
-	var touchState = false;
 }
 
 
 async function init() {
-    const modelURL = URL + "model.json";
-    const metadataURL = URL + "metadata.json";
+	const tmURL = "https://teachablemachine.withgoogle.com/models/hDFjqd73v/";
+	let model, webcam, ctx, labelContainer, maxPredictions;
+	var touchState = false;
+    const modelURL = tmURL + "model.json";
+    const metadataURL = tmURL + "metadata.json";
 
     // load the model and metadata
     // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
