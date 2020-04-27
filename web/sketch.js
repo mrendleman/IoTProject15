@@ -83,7 +83,7 @@ async function predict() {
     var pred2 = prediction[1].probability.toFixed(2);
     console.log("pred1: "+ pred1);
     console.log("pred2: "+ pred2);
-    var currentState = pred2>pred1;
+    var currentState = pred2>0.7;
 	if (alertType.value == "browser") {
         if (touchState != currentState) {
             touchState = currentState;
