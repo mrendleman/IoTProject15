@@ -1,0 +1,80 @@
+<!-- 
+<div>Teachable Machine Image Model - p5.js and ml5.js</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+<script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+
+ -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+<script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/addons/p5.sound.js"></script>
+
+
+
+<!-- 
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
+ -->
+
+<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
+
+</head>
+
+<body>
+
+<div class="container marketing ">
+	<div class="container marketing"> 
+		
+		
+		<div>Teachable Machine Face Touching Model</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<label for="alert-type">Choose an alert type:</label>
+				<select id="alert-type">
+					<option value="browser">In-browser</option>
+					<option value="pi">Raspberry Pi</option>
+				</select>
+
+				<div id="personWrapper">
+					<label for="person">Choose who you are:</label>
+					<select id="person">
+						<option value="michael">Michael</option>
+						<option value="lorena">Lorena</option>
+						<option value="cai">Cai</option>
+						<option value="ding">Ding</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<!-- <button type="button" onclick="init()">Start</button> -->
+		<button id="somebutton" onclick="start()">Start</button>
+		<button id="somebutton" onclick="stop()">Stop</button>
+		
+		<div class="row">
+			<div class="col-sm-12">
+				<script src="model_stuff.js"></script>
+			</div>
+		</div>
+	</div>
+</div>
+  	
+</body>
+
+</html>
