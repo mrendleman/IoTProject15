@@ -44,7 +44,7 @@ async function init() {
     webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
     await webcam.setup(); // request access to the webcam
     await webcam.play();
-    window.requestAnimationFrame(loop);
+    window.requestAnimationFrame(loopCam);
 	// append/get elements to the DOM
     const canvas = document.getElementById("canvas");
     canvas.width = size; canvas.height = size;
@@ -55,10 +55,10 @@ async function init() {
     }
 }
 
-async function loop(timestamp) {
+async function loopCam(timestamp) {
     webcam.update(); // update the webcam frame
     await predict();
-    window.requestAnimationFrame(loop);
+    window.requestAnimationFrame(loopCam);
 }
 
 async function predict() {
