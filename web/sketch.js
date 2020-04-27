@@ -1,3 +1,4 @@
+let model, webcam, ctx, labelContainer, maxPredictions, touchState, database, personElem,alertElem;
 function setup() {
 	audioClip=loadSound('./stoptouchingaudio.mp3');
 	const firebaseConfig = {
@@ -10,12 +11,12 @@ function setup() {
 	    "appId": "1:76330279348:web:fdb070eba465285b91d2e1"
 	};
 	firebase.initializeApp(firebaseConfig);
-	var database = firebase.database();
+	database = firebase.database();
 	// hiding person selector until Pi option is chosen
-	var personElem = document.getElementById("personWrapper");
+	personElem = document.getElementById("personWrapper");
 	personElem.style.visibility = "hidden";
-	var alert = document.getElementById("alert-type");
-	alert.onchange= function() {
+	alertElem = document.getElementById("alert-type");
+	alertElem.onchange= function() {
 	    personElem.style.visibility = (this.value == "pi") ? "visible":"hidden";
 	}
 	// More API functions here:
@@ -25,9 +26,8 @@ function setup() {
 }
 
 
-let model, webcam, ctx, labelContainer, maxPredictions, touchState;
 async function init() {
-	if (document.getElementById("alert-type").value == "browser") {
+	if (alertElem.value == "browser") {
 		 document.body.style.backgroundColor="green";
 	}
 	const tmURL = "https://teachablemachine.withgoogle.com/models/hDFjqd73v/";
