@@ -10,7 +10,8 @@ function setup() {
 // 	    "messagingSenderId": "76330279348",
 // 	    "appId": "1:76330279348:web:fdb070eba465285b91d2e1"
 // 	};
-	firebase.initializeApp(firebaseConfig);
+// 	firebase.initializeApp(firebaseConfig);
+	
 	database = firebase.database();
 	// hiding person selector until Pi option is chosen
 	personElem = document.getElementById("personWrapper");
