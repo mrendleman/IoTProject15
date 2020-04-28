@@ -16,17 +16,12 @@ function setup() {
 	
 	
 	database = firebase.database();
-	// hiding person selector until Pi option is chosen
-	personElem = document.getElementById("personWrapper");
-	personElem.style.visibility = "hidden";
+	document.body.style.backgroundColor="green";
 	alertElem = document.getElementById("alert-type");
 	alertElem.onchange= function() {
-	    personElem.style.visibility = (this.value == "pi") ? "visible":"hidden";
 		if (this.value == "pi") {
-			personElem.style.visibility = "visible";
 			document.body.style.backgroundColor="white";
 		} else {
-			personElem.style.visibility = "hidden";
 			document.body.style.backgroundColor="green";
 		}
 	}
