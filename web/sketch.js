@@ -78,8 +78,8 @@ async function predict() {
 
 	let bar1 = document.getElementById("bar1");
 	let bar2 = document.getElementById("bar2");
-	bar1.style.width = 100*prediction[1].probability.toFixed(2) + "%";
-	bar2.style.width = 100*prediction[2].probability.toFixed(2) + "%";
+	bar1.style.width = 100*prediction[0].probability.toFixed(2) + "%";
+	bar2.style.width = 100*prediction[1].probability.toFixed(2) + "%";
 
     for (let i = 0; i < maxPredictions; i++) {
         const classPrediction =
