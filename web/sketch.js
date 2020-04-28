@@ -110,13 +110,15 @@ async function predict() {
 
         }
     } else if (alertType.value == "pi") {
-        var personName = document.getElementById("person"); // get person selection
-        database.ref(personName.value).once('value').then(function(data) { // get current person's value
+		var persons = {"OHNuBBoydjRVQbm89tVh8eWIOJ13": "michael", "0403AizFXLWmCEu6YuzulIpr1Xr2": "lorena" };
+        var personName = persons[user.uid]; // get person selection
+		console.log("User is "+personName+" with UID "+user.uid);
+        database.ref(personName).once('value').then(function(data) { // get current person's value
             var val = data.val();
             if (val != currentState) { // if there is a change, send the change
-                console.log("Sending update: "+currentState+" to value " + personName.value);
+                console.log("Sending update: "+currentState+" to value " + personName);
                 var updates={}; 
-                updates[personName.value] = currentState;
+                updates[personName] = currentState;
                 database.ref().update(updates);
                 touchState = currentState;
             }
