@@ -1,16 +1,19 @@
 let user, model, webcam, ctx, labelContainer, maxPredictions, touchState, database, personElem,alertElem;
 function setup() {
 	audioClip=loadSound('./stoptouchingaudio.mp3');
-// 	const firebaseConfig = {
-// 	    "apiKey": "AIzaSyAy10kU2kBqbgQnFsjkUknMScIlKqkdbZ4",
-// 	    "authDomain": "finalporoject-team15.firebaseapp.com",
-// 	    "databaseURL": "https://finalporoject-team15.firebaseio.com",
-// 	    "projectID": "finalporoject-team15",
-// 	    "storageBucket": "finalporoject-team15.appspot.com",
-// 	    "messagingSenderId": "76330279348",
-// 	    "appId": "1:76330279348:web:fdb070eba465285b91d2e1"
-// 	};
-// 	firebase.initializeApp(firebaseConfig);
+/*	
+	const firebaseConfig = {
+	    "apiKey": "AIzaSyAy10kU2kBqbgQnFsjkUknMScIlKqkdbZ4",
+	    "authDomain": "finalporoject-team15.firebaseapp.com",
+	    "databaseURL": "https://finalporoject-team15.firebaseio.com",
+	    "projectID": "finalporoject-team15",
+	    "storageBucket": "finalporoject-team15.appspot.com",
+	    "messagingSenderId": "76330279348",
+	    "appId": "1:76330279348:web:fdb070eba465285b91d2e1"
+	};
+	firebase.initializeApp(firebaseConfig);
+*/
+	
 	
 	database = firebase.database();
 	// hiding person selector until Pi option is chosen
@@ -28,6 +31,7 @@ function setup() {
 		}
 	}
 	user=firebase.auth().currentUser;
+	
 	if (user) {
 		console.log(user);
 	}
