@@ -1,4 +1,4 @@
-let user, model, webcam, ctx, labelContainer, maxPredictions, touchState, database, personElem,alertElem;
+let model, webcam, ctx, labelContainer, maxPredictions, touchState, database, personElem,alertElem;
 function setup() {
 	audioClip=loadSound('./stoptouchingaudio.mp3');
 /*	
