@@ -35,17 +35,17 @@ canvas { display: block;
 	height:70px;
 }
 
-.bar-container { 
+#bar-container { 
 	width: 100%;
 	background-color: grey;
 }
 
-.bar1 {
+#bar1 {
 	width: 1%;
 	height: 30px;
 	background-color: green;
 }
-.bar2 {
+#bar2 {
 	width: 1%;
 	height: 30px;
 	background-color: green;
