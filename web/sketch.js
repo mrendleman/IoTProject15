@@ -88,7 +88,7 @@ async function predict() {
 
     for (let i = 0; i < maxPredictions; i++) {
         const classPrediction =
-            prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+            prediction[i].className + " probability: " + 100*prediction[i].probability.toFixed(2)+"%";
         labelContainer.childNodes[i].innerHTML = classPrediction;
     }
 
