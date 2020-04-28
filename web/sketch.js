@@ -18,6 +18,13 @@ function setup() {
 	alertElem = document.getElementById("alert-type");
 	alertElem.onchange= function() {
 	    personElem.style.visibility = (this.value == "pi") ? "visible":"hidden";
+		if (this.value == "pi") {
+			personElem.style.visibility = "visible";
+			document.body.style.backgroundColor="white";
+		} else {
+			personElem.style.visibility = "hidden";
+			document.body.style.backgroundColor="green";
+		}
 	}
 	// More API functions here:
 	// https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
@@ -27,9 +34,6 @@ function setup() {
 
 
 async function init() {
-	if (alertElem.value == "browser") {
-		 document.body.style.backgroundColor="green";
-	}
 	const tmURL = "https://teachablemachine.withgoogle.com/models/hDFjqd73v/";
 	touchState = false;
     const modelURL = tmURL + "model.json";
