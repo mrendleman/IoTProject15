@@ -57,6 +57,11 @@ async function init() {
     const canvas = document.getElementById("canvas");
     canvas.width = size; canvas.height = size;
     ctx = canvas.getContext("2d");
+	// set bars to be visible
+	document.getElementById("bar-container").style.visibility = "visible";
+	document.getElementById("bar1").style.visibility = "visible";
+	document.getElementById("bar2").style.visibility = "visible";
+
     labelContainer = document.getElementById("label-container");
     for (let i = 0; i < maxPredictions; i++) { // and class labels
         labelContainer.appendChild(document.createElement("div"));

@@ -40,15 +40,19 @@ canvas { display: block;
 	background-color: grey;
 	border-color: black;
 	border-width: medium;
+	border-style: solid;
+	visibility: hidden;
 }
 
 #bar1 {
 	width: 1%;
 	height: 30px;
 	background-color: DodgerBlue;
+	visibility: hidden;
 }
 #bar2 {
 	width: 1%;
 	height: 30px;
 	background-color: DodgerBlue;
+	visibility: hidden;
 }
