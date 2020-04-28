@@ -1,4 +1,4 @@
-let model, webcam, ctx, labelContainer, maxPredictions, touchState, database, personElem,alertElem;
+let user, model, webcam, ctx, labelContainer, maxPredictions, touchState, database, personElem,alertElem;
 function setup() {
 	audioClip=loadSound('./stoptouchingaudio.mp3');
 // 	const firebaseConfig = {
@@ -26,6 +26,10 @@ function setup() {
 			personElem.style.visibility = "hidden";
 			document.body.style.backgroundColor="green";
 		}
+	}
+	user=firebase.auth().currentUser;
+	if (user) {
+		console.log(user);
 	}
 
 }
