@@ -106,6 +106,7 @@ async function predict() {
         }
     } else if (alertType.value == "pi") {
 		var persons = {"OHNuBBoydjRVQbm89tVh8eWIOJ13": "michael", "0403AizFXLWmCEu6YuzulIpr1Xr2": "lorena" };
+		user=firebase.auth().currentUser;
         var personName = persons[user.uid]; // get person selection
 		console.log("User is "+personName+" with UID "+user.uid);
         database.ref(personName).once('value').then(function(data) { // get current person's value
