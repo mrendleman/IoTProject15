@@ -34,3 +34,19 @@ canvas { display: block;
 	align-items:center;
 	height:70px;
 }
+
+.bar-container { 
+	width: 100%;
+	background-color: grey;
+}
+
+.bar1 {
+	width: 1%;
+	height: 30px;
+	background-color: green;
+}
+.bar2 {
+	width: 1%;
+	height: 30px;
+	background-color: green;
+}
