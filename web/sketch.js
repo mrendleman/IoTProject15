@@ -1,4 +1,6 @@
 let model, webcam, ctx, labelContainer, maxPredictions, touchState, database, personElem,alertElem;
+
+
 function setup() {
 	audioClip=loadSound('./stoptouchingaudio.mp3');
 /*	
@@ -25,8 +27,8 @@ function setup() {
 			document.body.style.backgroundColor="green";
 		}
 	}
-	user=firebase.auth().currentUser;
-	
+	user = firebase.auth().currentUser;
+	//console.log(user, 'user--');
 	if (user) {
 		console.log(user);
 	}
@@ -99,24 +101,31 @@ async function predict() {
     console.log("Alert type is: "+ alertType.value);
     var pred1 = prediction[0].probability.toFixed(2);
     var pred2 = prediction[1].probability.toFixed(2);
-    console.log("pred1: "+ pred1);
-    console.log("pred2: "+ pred2);
+    //console.log("pred1: "+ pred1);
+    //console.log("pred2: "+ pred2);
     var currentState = pred2>0.7;
 	if (alertType.value == "browser") {
         if (touchState != currentState) {
             touchState = currentState;
             if (touchState) {
-                audioClip.play();
+                
+                //audioClip.play();
+                if(!audioClip.isPlaying()){
+					//song.play();
+					audioClip.play();
+				}
 				 document.body.style.backgroundColor="red";
             } else {
-                audioClip.stop();
+                //audioClip.stop();
 				document.body.style.backgroundColor="green";
             }
 
         }
     } else if (alertType.value == "pi") {
 		var persons = {"OHNuBBoydjRVQbm89tVh8eWIOJ13": "michael", "0403AizFXLWmCEu6YuzulIpr1Xr2": "lorena" };
-		user=firebase.auth().currentUser;
+		
+		user = firebase.auth().currentUser;
+        
         var personName = persons[user.uid]; // get person selection
 		console.log("User is "+personName+" with UID "+user.uid);
         database.ref(personName).once('value').then(function(data) { // get current person's value
