@@ -1,4 +1,4 @@
-let model, webcam, ctx, labelContainer, maxPredictions, touchState, database, personElem,alertElem;
+let currentUser, model, webcam, ctx, labelContainer, maxPredictions, touchState, database, personElem,alertElem;
 
 
 function setup() {
@@ -122,17 +122,34 @@ async function predict() {
 
         }
     } else if (alertType.value == "pi") {
-		var persons = {"OHNuBBoydjRVQbm89tVh8eWIOJ13": "michael", "0403AizFXLWmCEu6YuzulIpr1Xr2": "lorena" };
+		//var persons = {"OHNuBBoydjRVQbm89tVh8eWIOJ13": "michael", "0403AizFXLWmCEu6YuzulIpr1Xr2": "lorena" };
+		var persons = {"michael.c.rendleman@gmail.com": "michael", "lcastro@edumat.org": "lorena" };
 		
-		user = firebase.auth().currentUser;
+		//user = firebase.auth().currentUser;
+        //console(user);
         
-        var personName = persons[user.uid]; // get person selection
-		console.log("User is "+personName+" with UID "+user.uid);
+        firebase.auth().onAuthStateChanged(function(user) {
+		if (user) {
+			// User is signed in.
+			currentUser = user.email;
+			console.log(user.email, "who am I? --sketch");
+			
+		  } else {
+			// No user is signed in.
+			currentUser = "";
+			console.log(user.email, "who am I? --sketch");
+		  }
+		});
+        
+        
+        
+        var personName = persons[currentUser]; // get person selection
+		console.log("User is "+personName+" with email "+currentUser);
         database.ref(personName).once('value').then(function(data) { // get current person's value
             var val = data.val();
             if (val != currentState) { // if there is a change, send the change
                 console.log("Sending update: "+currentState+" to value " + personName);
-                var updates={}; 
+                var updates = {}; 
                 updates[personName] = currentState;
                 database.ref().update(updates);
                 touchState = currentState;
