@@ -60,8 +60,9 @@ async function init() {
     canvas.width = size; canvas.height = size;
     ctx = canvas.getContext("2d");
 	// set bars to be visible
-	document.getElementById("bar-container").style.visibility = "visible";
 	document.getElementById("bar1").style.visibility = "visible";
+	document.getElementById("bar-container1").style.visibility = "visible";
+	document.getElementById("bar-container2").style.visibility = "visible";
 	document.getElementById("bar2").style.visibility = "visible";
 
     labelContainer = document.getElementById("label-container");
