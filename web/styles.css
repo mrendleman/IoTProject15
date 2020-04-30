@@ -35,7 +35,8 @@ canvas { display: block;
 	height:70px;
 }
 
-#bar-container { 
+
+#bar-container1 { 
 	width: 100%;
 	background-color: grey;
 	border-color: black;
@@ -43,7 +44,14 @@ canvas { display: block;
 	border-style: solid;
 	visibility: hidden;
 }
-
+#bar-container2 { 
+	width: 100%;
+	background-color: grey;
+	border-color: black;
+	border-width: medium;
+	border-style: solid;
+	visibility: hidden;
+}
 #bar1 {
 	width: 1%;
 	height: 30px;
