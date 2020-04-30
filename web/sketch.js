@@ -145,7 +145,7 @@ async function predict() {
         
         
         var personName = persons[currentUser]; // get person selection
-		console.log("User is "+personName+" with email "+currentUser);
+		//console.log("User is "+personName+" with email "+currentUser);
         database.ref(personName).once('value').then(function(data) { // get current person's value
             var val = data.val();
             if (val != currentState) { // if there is a change, send the change
