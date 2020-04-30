@@ -29,9 +29,9 @@ function setup() {
 	}
 	user = firebase.auth().currentUser;
 	//console.log(user, 'user--');
-	if (user) {
-		console.log(user);
-	}
+	// if (user) {
+// 		console.log(user);
+// 	}
 
 }
 
@@ -117,7 +117,7 @@ async function predict() {
 				}
 				 document.body.style.backgroundColor="red";
             } else {
-                //audioClip.stop();
+                audioClip.stop();
 				document.body.style.backgroundColor="green";
             }
 
@@ -133,12 +133,12 @@ async function predict() {
 		if (user) {
 			// User is signed in.
 			currentUser = user.email;
-			console.log(user.email, "who am I? --sketch");
+			//console.log(user.email, "who am I? --sketch");
 			
 		  } else {
 			// No user is signed in.
 			currentUser = "";
-			console.log(user.email, "who am I? --sketch");
+			//console.log(user.email, "who am I? --sketch");
 		  }
 		});
         
